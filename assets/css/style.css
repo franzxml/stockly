@@ -144,3 +144,207 @@ body {
     font-weight: bold;
     text-decoration: underline;
 }
+/* --- LAYOUT DASHBOARD --- */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Mencegah scroll di body utama */
+}
+
+/* 1. Sidebar Styles */
+.sidebar {
+    width: 260px;
+    background-color: #f3f0e7; /* Warna Krem/Beige sesuai gambar */
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+.sidebar-header .brand-logo {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: transparent; /* Di desain tidak ada bg block */
+    font-weight: 700; /* Hanya menebal saat aktif */
+}
+
+.menu-item i {
+    font-size: 1.5rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 2. Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #dbece2 0%, #154f30 100%); /* Gradasi Hijau */
+    overflow-y: auto; /* Scroll hanya di area konten */
+}
+
+/* Topbar */
+.topbar {
+    background-color: #f3f0e7; /* Warna sama dengan sidebar */
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Content Area */
+.content-wrapper {
+    padding: 40px;
+}
+
+.page-header h2 {
+    color: #0f3923;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Toolbar (Search & Button) */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    position: relative;
+    width: 300px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 8px 8px 0 0; /* Gaya rounded atas saja seperti di gambar? atau full? */
+    border: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #e2e8f0;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+
+/* Sesuaikan style search bar agar mirip gambar (Box Hijau Tua/Background Gelap) */
+.search-bar input {
+    background-color: #0f3923; /* Hijau gelap */
+    color: white;
+    border-radius: 8px;
+}
+
+.btn-add {
+    background-color: rgba(255,255,255,0.2);
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-add:hover {
+    background-color: #fff;
+    color: var(--primary-dark);
+}
+
+/* Data Table Card */
+.data-card {
+    background-color: #eefdf4; /* Warna hijau sangat muda/putih mint */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #15803d;
+    color: #000;
+    font-weight: 700;
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #333;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}

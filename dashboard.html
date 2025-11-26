@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Stockly</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="brand-logo">St<i class="ph-fill ph-package"></i>ckly</h1>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item"><i class="ph-bold ph-sign-out"></i> Tutup</a>
+                <a href="dashboard.html" class="menu-item active"><i class="ph-bold ph-cube"></i> Produk</a> <a href="#" class="menu-item"><i class="ph-bold ph-users"></i> Admin</a>
+                <a href="#" class="menu-item"><i class="ph-bold ph-squares-four"></i> Kategori</a>
+                <a href="#" class="menu-item"><i class="ph-bold ph-storefront"></i> Stok</a>
+                <a href="#" class="menu-item"><i class="ph-bold ph-file-text"></i> Laporan</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin+Stockly&background=random" alt="User">
+                    <span>Akun Saya</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <nav class="top-nav">
+                    <a href="#">Beranda</a>
+                    <a href="#">Layanan</a>
+                    <a href="#">Kontak</a>
+                    <a href="#">Tentang Kami</a>
+                    <a href="index.html" class="logout-link">Keluar</a>
+                </nav>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h2>Manajemen Produk</h2>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-bar">
+                        <i class="ph-bold ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari Produk...">
+                    </div>
+                    <button class="btn-add"><i class="ph-bold ph-plus"></i> Tambah Produk</button>
+                </div>
+
+                <div class="data-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kopi Susu</td>
+                                <td>Minuman</td>
+                                <td>Rp 20.000</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Teh Hijau</td>
+                                <td>Minuman</td>
+                                <td>Rp 15.000</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>Gula Pasir</td>
+                                <td>Bahan Makanan</td>
+                                <td>Rp 12.000</td>
+                                <td>50</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
