@@ -6,6 +6,7 @@
     <title>Dashboard - Stockly</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -16,16 +17,29 @@
             </div>
 
             <nav class="sidebar-menu">
-                <a href="#" class="menu-item"><i class="ph-bold ph-sign-out"></i> Tutup</a>
-                <a href="dashboard.html" class="menu-item active"><i class="ph-bold ph-cube"></i> Produk</a> <a href="#" class="menu-item"><i class="ph-bold ph-users"></i> Admin</a>
-                <a href="#" class="menu-item"><i class="ph-bold ph-squares-four"></i> Kategori</a>
-                <a href="#" class="menu-item"><i class="ph-bold ph-storefront"></i> Stok</a>
-                <a href="#" class="menu-item"><i class="ph-bold ph-file-text"></i> Laporan</a>
+                <a href="#" class="menu-item" onclick="showLogoutModal()">
+                    <i class="ph-bold ph-sign-out"></i> Tutup
+                </a>
+                <a href="#" id="menu-produk" class="menu-item active" onclick="loadPage('produk')">
+                    <i class="ph-bold ph-cube"></i> Produk
+                </a>
+                <a href="#" id="menu-admin" class="menu-item" onclick="loadPage('admin')">
+                    <i class="ph-bold ph-users"></i> Admin
+                </a>
+                <a href="#" id="menu-kategori" class="menu-item" onclick="loadPage('kategori')">
+                    <i class="ph-bold ph-squares-four"></i> Kategori
+                </a>
+                <a href="#" id="menu-stok" class="menu-item" onclick="loadPage('stok')">
+                    <i class="ph-bold ph-storefront"></i> Stok
+                </a>
+                <a href="#" id="menu-laporan" class="menu-item" onclick="loadPage('laporan')">
+                    <i class="ph-bold ph-file-text"></i> Laporan
+                </a>
             </nav>
 
             <div class="sidebar-footer">
                 <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Admin+Stockly&background=random" alt="User">
+                    <img src="https://ui-avatars.com/api/?name=Admin+Stockly&background=random&color=fff&background=15803d" alt="User">
                     <span>Akun Saya</span>
                 </div>
             </div>
@@ -38,58 +52,84 @@
                     <a href="#">Layanan</a>
                     <a href="#">Kontak</a>
                     <a href="#">Tentang Kami</a>
-                    <a href="index.html" class="logout-link">Keluar</a>
+                    <a href="#" class="logout-link" onclick="showLogoutModal()">Keluar</a>
                 </nav>
             </header>
 
-            <div class="content-wrapper">
-                <div class="page-header">
-                    <h2>Manajemen Produk</h2>
+            <div id="main-content" class="content-wrapper">
                 </div>
-
-                <div class="toolbar">
-                    <div class="search-bar">
-                        <i class="ph-bold ph-magnifying-glass"></i>
-                        <input type="text" placeholder="Cari Produk...">
-                    </div>
-                    <button class="btn-add"><i class="ph-bold ph-plus"></i> Tambah Produk</button>
-                </div>
-
-                <div class="data-card">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Nama Produk</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Kopi Susu</td>
-                                <td>Minuman</td>
-                                <td>Rp 20.000</td>
-                                <td>100</td>
-                            </tr>
-                            <tr>
-                                <td>Teh Hijau</td>
-                                <td>Minuman</td>
-                                <td>Rp 15.000</td>
-                                <td>80</td>
-                            </tr>
-                            <tr>
-                                <td>Gula Pasir</td>
-                                <td>Bahan Makanan</td>
-                                <td>Rp 12.000</td>
-                                <td>50</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </main>
     </div>
 
+    <div id="modal-tambah-produk" class="modal-overlay hidden">
+        <div class="modal-box" style="width: 500px; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Tambah Produk Baru</h2>
+                <button onclick="closeModal('modal-tambah-produk')" style="background:none; border:none; cursor:pointer; font-size:1.5rem;">&times;</button>
+            </div>
+            
+            <form id="form-tambah-produk" onsubmit="handleTambahProduk(event)">
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:600;">Nama Produk</label>
+                    <input type="text" id="input-nama" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:600;">Kategori</label>
+                    <select id="input-kategori" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                        <option>Minuman</option>
+                        <option>Bahan Makanan</option>
+                        <option>Perlengkapan</option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                    <div>
+                        <label style="display:block; margin-bottom:5px; font-weight:600;">Harga (Rp)</label>
+                        <input type="number" id="input-harga" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label style="display:block; margin-bottom:5px; font-weight:600;">Stok Awal</label>
+                        <input type="number" id="input-stok" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                    </div>
+                </div>
+
+                <div class="modal-buttons" style="justify-content: flex-end;">
+                    <button type="button" class="btn-modal btn-cancel" onclick="closeModal('modal-tambah-produk')">Batal</button>
+                    <button type="submit" class="btn-modal btn-confirm">Simpan Produk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-confirm" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-icon icon-question">
+                <i class="ph-bold ph-question"></i>
+            </div>
+            <h2>Konfirmasi Logout</h2>
+            <p>Apakah kamu yakin ingin keluar dari akun ini?</p>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-cancel" onclick="closeModal('modal-confirm')">Batal</button>
+                <button class="btn-modal btn-confirm" onclick="processLogout()">Keluar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-success" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-icon icon-success">
+                <i class="ph-bold ph-check"></i>
+            </div>
+            <h2>Logout Berhasil</h2>
+            <p>Anda telah berhasil dari akun anda.<br>Sampai jumpa lagi!</p>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-cancel" onclick="redirectToLogin()">Login Kembali</button>
+                <button class="btn-modal btn-confirm" onclick="redirectToLogin()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

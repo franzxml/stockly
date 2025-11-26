@@ -1,350 +1,105 @@
-/* Import Google Font: Poppins */
+/* GLOBAL SETTINGS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Palet Warna Stockly berdasarkan Desain */
-    --primary-dark: #14532d;   /* Hijau Tua (Header/Button) */
-    --primary-green: #15803d;  /* Hijau Standar */
-    --accent-green: #4ade80;   /* Hijau Muda (Aksen) */
-    --bg-gradient-start: #f0fdf4; /* Latar belakang pudar */
-    --bg-gradient-end: #14532d;   /* Latar belakang hijau tua */
+    --primary-dark: #14532d;
+    --primary-green: #15803d;
+    --accent-green: #4ade80;
+    --bg-gradient-start: #f0fdf4;
+    --bg-gradient-end: #14532d;
     --text-dark: #1e293b;
-    --text-light: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.25);
     --glass-border: rgba(255, 255, 255, 0.4);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--primary-dark) 100%);
-    background-attachment: fixed; /* Agar background tidak ikut scroll */
-}
+body { min-height: 100vh; background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--primary-dark) 100%); background-attachment: fixed; }
 
-/* Utilitas */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-/* --- Styles Khusus Halaman Login --- */
-.login-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
+/* LOGIN STYLES */
+.login-body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+.brand-header h1 { font-size: 3rem; font-weight: 800; color: #0f3923; margin-bottom: 20px; display: flex; align-items: center; gap: 5px; }
+.brand-header i { color: #d97706; }
+.login-card { background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 40px; border-radius: 20px; width: 400px; text-align: center; position: relative; }
+.back-btn { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: var(--primary-dark); }
+.login-header h2 { font-weight: 700; margin-bottom: 5px; }
+.login-header p { font-size: 0.9rem; margin-bottom: 30px; }
+.form-group input { width: 100%; padding: 12px 15px; margin-bottom: 15px; background: rgba(255, 255, 255, 0.5); border: 1px solid #fff; border-radius: 8px; outline: none; }
+.form-options { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 25px; }
+.btn-primary { width: 100%; padding: 12px; background-color: var(--primary-dark); color: white; border: none; border-radius: 25px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { background-color: var(--primary-green); }
+.login-footer { margin-top: 20px; font-size: 0.8rem; }
 
-.brand-header h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #0f3923; /* Hijau sangat tua untuk logo */
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+/* DASHBOARD LAYOUT */
+.dashboard-container { display: flex; height: 100vh; overflow: hidden; }
+.sidebar { width: 260px; background-color: #f3f0e7; display: flex; flex-direction: column; padding: 30px 20px; flex-shrink: 0; }
+.sidebar-header .brand-logo { font-size: 2rem; color: var(--primary-dark); margin-bottom: 40px; display: flex; align-items: center; gap: 5px; }
+.sidebar-menu { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+.menu-item { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-dark); font-size: 1.1rem; padding: 10px 15px; border-radius: 12px; transition: 0.3s; font-weight: 500; }
+.menu-item:hover, .menu-item.active { font-weight: 700; color: #000; }
+.sidebar-footer { margin-top: auto; }
+.user-profile { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.user-profile img { width: 40px; height: 40px; border-radius: 50%; }
 
-.brand-header i {
-    color: #d97706; /* Warna oranye box ikon */
-}
+.main-content { flex-grow: 1; display: flex; flex-direction: column; background: linear-gradient(135deg, #dbece2 0%, #154f30 100%); overflow-y: auto; }
+.topbar { background-color: #f3f0e7; padding: 20px 40px; display: flex; justify-content: flex-end; }
+.top-nav { display: flex; gap: 30px; }
+.top-nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; }
+.content-wrapper { padding: 40px; }
 
-/* Glassmorphism Card */
-.login-card {
-    background: rgba(255, 255, 255, 0.3); /* Transparan */
-    backdrop-filter: blur(10px); /* Efek blur */
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 20px;
-    width: 400px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    position: relative;
-    text-align: center;
-}
+/* COMMON COMPONENTS */
+.page-header h2 { color: #0f3923; font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 30px; }
+.toolbar { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.search-bar { position: relative; width: 300px; }
+.search-bar input { width: 100%; padding: 10px 15px 10px 40px; border-radius: 8px; border: none; background-color: rgba(255, 255, 255, 0.4); color: #fff; outline: none; }
+.search-bar i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #fff; }
 
-.back-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 1.5rem;
-    color: var(--primary-dark);
-    text-decoration: none;
-}
+/* Dark Theme Toolbar (Kategori & Admin) */
+.search-bar.dark-theme input { background-color: #064e3b; color: white; }
+.btn-add { background-color: rgba(255,255,255,0.2); border: 1px solid #fff; padding: 10px 20px; color: #fff; border-radius: 20px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.btn-add:hover { background-color: #fff; color: var(--primary-dark); }
+.btn-add.dark-theme { background-color: #064e3b; border: none; }
+.btn-add.dark-theme:hover { background-color: #0f3923; color: white; }
 
-.login-header h2 {
-    color: #000;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
+/* TABLES */
+.data-card { background-color: #eefdf4; border-radius: 20px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { text-align: left; padding: 15px; border-bottom: 2px solid #15803d; color: #000; font-weight: 700; }
+.data-table td { padding: 15px; border-bottom: 1px solid #e5e7eb; color: #333; }
+.action-icons { display: flex; gap: 10px; }
+.icon-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; }
+.custom-checkbox { width: 18px; height: 18px; accent-color: var(--primary-green); }
 
-.login-header p {
-    color: #333;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-}
+/* STOK PAGE */
+.stock-dashboard-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px; margin-bottom: 30px; }
+.card { background-color: #eefdf4; border-radius: 20px; padding: 30px; }
+.action-card { display: flex; justify-content: space-between; }
+.action-column { flex: 1; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+.action-column h3 { color: #0f3923; font-weight: 700; }
+.divider-vertical { width: 2px; height: 100px; background-color: #fff; margin: 0 20px; }
+.form-select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; background: #fff; }
+.btn-stok { width: 100%; padding: 10px 0; border: none; border-radius: 25px; color: white; font-weight: 600; cursor: pointer; }
+.btn-green { background-color: #1f5e3d; }
+.btn-dark-green { background-color: #14532d; }
+.section-title { background-color: #eefdf4; display: inline-block; padding: 5px 15px; border-radius: 10px; font-weight: 700; color: #0f3923; margin-bottom: 10px;}
 
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    background: rgba(255, 255, 255, 0.5); /* Input semi transparan */
-    border: 1px solid #fff;
-    border-radius: 8px;
-    outline: none;
-    color: var(--primary-dark);
-    font-size: 1rem;
-}
+/* ADMIN PAGE */
+.status-badge { padding: 5px 15px; border-radius: 15px; font-size: 0.9rem; font-weight: 500; }
+.status-aktif { background-color: #dcfce7; color: #166534; }
 
-.form-group input::placeholder {
-    color: #555;
-}
+/* REPORT PAGE */
+.report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.chart-container { background: transparent; padding: 10px; }
 
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    margin-bottom: 25px;
-    color: #000;
-}
-
-.btn-primary {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-dark);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-green);
-}
-
-.login-footer {
-    margin-top: 20px;
-    font-size: 0.8rem;
-}
-
-.login-footer a {
-    color: #000;
-    font-weight: bold;
-    text-decoration: underline;
-}
-/* --- LAYOUT DASHBOARD --- */
-.dashboard-container {
-    display: flex;
-    height: 100vh;
-    overflow: hidden; /* Mencegah scroll di body utama */
-}
-
-/* 1. Sidebar Styles */
-.sidebar {
-    width: 260px;
-    background-color: #f3f0e7; /* Warna Krem/Beige sesuai gambar */
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-    border-right: 1px solid rgba(0,0,0,0.05);
-    flex-shrink: 0;
-}
-
-.sidebar-header .brand-logo {
-    font-size: 2rem;
-    color: var(--primary-dark);
-    margin-bottom: 50px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex-grow: 1;
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    color: var(--text-dark);
-    font-size: 1.1rem;
-    padding: 10px 15px;
-    border-radius: 12px;
-    transition: 0.3s;
-    font-weight: 500;
-}
-
-.menu-item:hover, .menu-item.active {
-    background-color: transparent; /* Di desain tidak ada bg block */
-    font-weight: 700; /* Hanya menebal saat aktif */
-}
-
-.menu-item i {
-    font-size: 1.5rem;
-}
-
-.sidebar-footer {
-    margin-top: auto;
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.user-profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-/* 2. Main Content Styles */
-.main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #dbece2 0%, #154f30 100%); /* Gradasi Hijau */
-    overflow-y: auto; /* Scroll hanya di area konten */
-}
-
-/* Topbar */
-.topbar {
-    background-color: #f3f0e7; /* Warna sama dengan sidebar */
-    padding: 20px 40px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.top-nav {
-    display: flex;
-    gap: 30px;
-}
-
-.top-nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-/* Content Area */
-.content-wrapper {
-    padding: 40px;
-}
-
-.page-header h2 {
-    color: #0f3923;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-/* Toolbar (Search & Button) */
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.search-bar {
-    position: relative;
-    width: 300px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px 15px 10px 40px;
-    border-radius: 8px 8px 0 0; /* Gaya rounded atas saja seperti di gambar? atau full? */
-    border: none;
-    background-color: rgba(255, 255, 255, 0.4);
-    color: #fff;
-    outline: none;
-}
-
-.search-bar input::placeholder {
-    color: #e2e8f0;
-}
-
-.search-bar i {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fff;
-}
-
-/* Sesuaikan style search bar agar mirip gambar (Box Hijau Tua/Background Gelap) */
-.search-bar input {
-    background-color: #0f3923; /* Hijau gelap */
-    color: white;
-    border-radius: 8px;
-}
-
-.btn-add {
-    background-color: rgba(255,255,255,0.2);
-    border: 1px solid #fff;
-    padding: 10px 20px;
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.btn-add:hover {
-    background-color: #fff;
-    color: var(--primary-dark);
-}
-
-/* Data Table Card */
-.data-card {
-    background-color: #eefdf4; /* Warna hijau sangat muda/putih mint */
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th {
-    text-align: left;
-    padding: 15px;
-    border-bottom: 2px solid #15803d;
-    color: #000;
-    font-weight: 700;
-}
-
-.data-table td {
-    padding: 15px;
-    border-bottom: 1px solid #e5e7eb;
-    color: #333;
-}
-
-.data-table tr:last-child td {
-    border-bottom: none;
-}
+/* MODALS */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.hidden { display: none; }
+.modal-box { background: #eefdf4; padding: 30px; border-radius: 20px; text-align: center; width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.modal-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; font-size: 2rem; }
+.icon-question { border: 3px solid #0f3923; color: #0f3923; }
+.icon-success { border: 3px solid #15803d; color: #15803d; }
+.modal-box h2 { color: #0f3923; margin-bottom: 10px; }
+.modal-box p { color: #333; margin-bottom: 25px; line-height: 1.5; }
+.modal-buttons { display: flex; gap: 15px; justify-content: center; }
+.btn-modal { padding: 10px 30px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; }
+.btn-cancel { background-color: #e2e8f0; color: #333; }
+.btn-confirm { background-color: #4ade80; color: #0f3923; }
