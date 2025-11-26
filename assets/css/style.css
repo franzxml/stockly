@@ -1,0 +1,36 @@
+/* Import Google Font: Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Palet Warna Stockly berdasarkan Desain */
+    --primary-dark: #14532d;   /* Hijau Tua (Header/Button) */
+    --primary-green: #15803d;  /* Hijau Standar */
+    --accent-green: #4ade80;   /* Hijau Muda (Aksen) */
+    --bg-gradient-start: #f0fdf4; /* Latar belakang pudar */
+    --bg-gradient-end: #14532d;   /* Latar belakang hijau tua */
+    --text-dark: #1e293b;
+    --text-light: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--primary-dark) 100%);
+    background-attachment: fixed; /* Agar background tidak ikut scroll */
+}
+
+/* Utilitas */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
