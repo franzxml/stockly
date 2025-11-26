@@ -34,3 +34,113 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+/* --- Styles Khusus Halaman Login --- */
+.login-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.brand-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0f3923; /* Hijau sangat tua untuk logo */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.brand-header i {
+    color: #d97706; /* Warna oranye box ikon */
+}
+
+/* Glassmorphism Card */
+.login-card {
+    background: rgba(255, 255, 255, 0.3); /* Transparan */
+    backdrop-filter: blur(10px); /* Efek blur */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.login-header h2 {
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #333;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.5); /* Input semi transparan */
+    border: 1px solid #fff;
+    border-radius: 8px;
+    outline: none;
+    color: var(--primary-dark);
+    font-size: 1rem;
+}
+
+.form-group input::placeholder {
+    color: #555;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-dark);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green);
+}
+
+.login-footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}
+
+.login-footer a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+}
