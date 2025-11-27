@@ -9,18 +9,16 @@ Stockly merupakan sistem manajemen produk dan inventaris toko sederhana berbasis
 * JavaScript
 
 ## Struktur Folder
-```text
-STOCKLY/
-│── index.html
-│── dashboard.html
-│── README.md
-└── assets/
-    ├── css/
-    │   └── style.css
-    ├── images/
-    └── js/
-        └── script.js
-```
+    STOCKLY/
+    │── index.html
+    │── dashboard.html
+    │── README.md
+    └── assets/
+        ├── css/
+        │   └── style.css
+        ├── images/
+        └── js/
+            └── script.js
 
 ## Cara Menjalankan
 1. Unduh atau *clone* repositori ini ke komputer lokal Anda.
@@ -31,6 +29,7 @@ STOCKLY/
 
 ## Domain
 Website dapat diakses melalui:
-https://stockly-red.vercel.app/
+[https://stockly-red.vercel.app/](https://stockly-red.vercel.app/)
+
 ---
 Dikembangkan oleh: @franzxml
