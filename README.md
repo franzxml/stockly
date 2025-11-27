@@ -30,6 +30,7 @@ STOCKLY/
 5. Jika ingin *live reload*, gunakan ekstensi Live Server di VS Code.
 
 ## Domain
-Website dapat diakses melalui: https://stockly-red.vercel.app/
+Website dapat diakses melalui:
+https://stockly-red.vercel.app/
 ---
 Dikembangkan oleh: @franzxml
